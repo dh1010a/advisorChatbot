@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<title>채팅해조</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<link rel="stylesheet" href="css/jquery-ui.css" />
+<link rel="stylesheet" href="css/common.css" />
+
+<script src="js/jquery-1.12.4.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+		
+		//var targetUrl = "http://192.168.56.1:9191/api/domain/";
+		
+		/*<![CDATA[*/
+		var name = "[[${name}]]";
+		var userid = "[[${userid}]]";
+		var targetUrl = "[[${targetUrl}]]";
+		//console.log(message);
+		/*]]>*/
+		
+		//alert("name : "+name);
+		//alert("userid : "+userid);
+	    
+		
+	    $(document).ready(function() {
+	    	//connect();
+	    	
+			
+			$(".mytext").on("keyup", function(e){
+				
+			    if (e.which == 13){
+			         var text = $(this).val();
+			         
+				     if (text !== ""){
+				     	insertChat("me", text, 0);
+				        //wsocket.send(text);
+				        sendData(text)
+				        $(this).val('');
+				     } 
+			    }
+		    
+			});
+			
+			$('.cms__input--btn').click(function(){
+			  var text = $(".mytext").val();
+			     if (text !== ""){
+			     	insertChat("me", text, 0);
+			        //wsocket.send(text);
+			        sendData(text)
+			        $(".mytext").val('');
+			     } 
+			});
+			
+			$(".btn--close").click(function() {
+		        window.open('about:blank', '_self').close();
+		    });
+
+		});
+	    
+	    function sendData(term) {
+	    	
+	    	var data = {};
+			
+			data['name'] = encodeURI(name);
+			data['message'] = encodeURI(term);
+			data['userid'] = encodeURI(userid);
+			
+			data['name'] = name;
+			data['message'] = term;
+			data['userid'] = userid;
+			
+		  addData(data);
+			
+	    }
+		
+	    function addData(data){
+			console.log('S:', data);
+		     $.ajax({
+		             type: "POST",
+		             //url: "http://192.168.56.1:9191/api/domain/",
+		             url: targetUrl,
+		             data: JSON.stringify(data),
+		             contentType: "application/json; charset=utf-8",
+		             crossDomain: true,
+		             dataType: "json",
+		             success: function (data, status, jqXHR) {
+		                 	var content = data.message;
+		                 	//alert("---> : "+content)
+							//alert(data.message);
+		                 	insertChat("you", data.message);
+		             },
+
+		             error: function (jqXHR, status) {
+		                 // error handler
+		                 console.log("==============> : "+jqXHR);
+		                 insertChat("you", "상담어드바이저가 좀 바빠요. 잠시후에 다시 문의 하세요 !!!!");
+		             }
+		          });
+		    }
+	
+		function onOpen(evt) {
+		}
+		
+		function disconnect() {
+			//wsocket.close();
+		}
+		
+		function onMessage(evt) {
+			var data = evt.data;
+			insertChat("you", data); 
+		}
+		
+		function formatAMPM(date) {
+		    var hours = date.getHours();
+		    var minutes = date.getMinutes();
+		    var ampm = hours >= 12 ? '오후' : '오전';
+		    hours = hours % 12;
+		    hours = hours ? hours : 12; // the hour '0' should be '12'
+		    minutes = minutes < 10 ? '0'+minutes : minutes;
+		    var strTime = hours + ':' + minutes + ' ' + ampm;
+		    return strTime;
+		}     
+		
+		//-- No use time. It is a javaScript effect.
+		function insertChat(who, text, time) {
+			time=0 ;
+		    var control = "";
+		    var date = formatAMPM(new Date());
+		    
+		    if (who == "you"){
+		        
+		        control =    '<div class="chat__counselor">' +
+		                        '<div class="chat">' +
+		                                '<p class="chat__msg">'+ text +'</p>' +
+		                                '<p class="date"><small>'+date+'</small></p>' +
+		                            '</div>' +
+		                        '</div>';               
+		    }else{
+		        control =      '<div class="chat__customer">' +
+		                            '<div class="chat">' +
+		                                '<p class="chat__msg">'+text+'</p>' +
+		                                '<p class="date"><small>'+date+'</small></p>' +
+		                            '</div>' +
+		                        '</div>';
+		    }
+		    setTimeout(
+		        function(){                        
+		            $(".chat--scroll").append(control);
+		            $(".chat--scroll").scrollTop($(".chat--scroll")[0].scrollHeight);
+
+		        }, time);
+		    
+		}
+		
+		function resetChat(){
+		    $(".chat--scroll").empty();
+		}
+			
+		
+			
+	</script>
+</head>
+
+<body>
+
+	<div id="wrap">
+
+		<article class="wrap__cms">
+
+			<header class="header__pop">
+				<h2>채팅해조</h2>
+				<a class="btn--close"><img src="img/btn-close.png" alt="닫기" /></a>
+			</header>
+
+			<!--  
+	<div class="cms__option">
+		<select>
+			<option value="1">Test Bot</option>
+		</select>
+		<select>
+			<option value="1">Test Bot</option>
+		</select>
+		<select>
+			<option value="1">Bot 선택</option>
+		</select>
+		<select>
+			<option value="1">Bot 선택</option>
+		</select>
+	</div>
+-->
+
+			<div class="chat--scroll" id="scrollDiv">
+
+				<div class="chat__counselor">
+					<div class="chat">
+						<p class="chat__msg" th:utext="${welcomeMessage}"></p>
+						<p class="chat__msg">업무를 도와드릴 Advisor입니다. 무엇을 도와 드릴까요?</p>
+						<p class="chat__msg">1.휴가 2.회의실 예약 3.근속관련 4.출장 및 외근 신청<br>5.공지사항 조회 6.증명서 발급 7.사원정보 조회 중 하나를 입력해주세요.</p>
+						<p class="date"></p>
+					</div>
+				</div>
+
+				<div class="chat__counselor">
+					<div class="chat">
+						<p>
+							<img src="image/startrmr.png" alt="상담사" />
+						</p>
+						<p class="date"></p>
+					</div>
+				</div>
+
+<!-- 				<div class="chat__customer">
+					<div class="chat">
+						<p class="date">오전 11:03</p>
+						<p class="chat__msg">네 안녕하세요.</p>
+					</div>
+				</div> -->
+
+
+
+			</div>
+
+			<!--  
+	<div class="wrap__cms__alert">
+		※ BOT을 선택해야만 입력할 수 있으며, 개발 서버에 업로드한 대화가<br/>
+		반영되지 않았을 경우 [개발배포] 버튼을 선택해 주세요.
+	</div>
+	-->
+
+			<div class="wrap__cms__input">
+				<div class="cms__input">
+					<input type="text" class="mytext" placeholder="대화 입력..." /> <input
+						type="submit" class="cms__input--btn" value="" />
+				</div>
+			</div>
+
+		</article>
+
+	</div>
+
+</body>
+</html>

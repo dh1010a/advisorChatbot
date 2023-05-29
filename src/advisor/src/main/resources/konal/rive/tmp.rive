@@ -1,0 +1,18 @@
+/**
+ * Default Trigger
+ **/
+ 
+! version = 2.0
+
+! local concat = none
+
++ knock knock
+- who is there?
+
++ *
+% who is there?
+- <star> who?
+
++ *
+% * who
+- LOL! <star>! That's funny!

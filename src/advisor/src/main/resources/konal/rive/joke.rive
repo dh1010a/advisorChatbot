@@ -1,0 +1,16 @@
+/**
+ * Default Trigger
+ **/
+ 
+! version = 2.0
+
+! local concat = none
+
+! array joke1 = 장난|에잇|으어
+
+
++ [*] (@joke1) [*]
+- 왜 그러시나요 마음을 넒게 가지세요.{weight=25}
+- 참는자가 승리합니다. 전 잘 참아요.{weight=25}
+- ㅠ.ㅠ 슬퍼요 그런말 하지 말아부세요.{weight=25}
+- 여기서 그러시면 안됩니다. {weight=25}

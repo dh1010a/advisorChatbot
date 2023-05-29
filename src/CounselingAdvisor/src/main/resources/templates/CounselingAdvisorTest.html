@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+<body>
+	<div id="temp"><p class="admin-message-text text-center" th:utext="${welcomeMessage}"></p></div>
+	<form action="http://192.168.56.1:9191/api/domain/" id="searchForm1">
+		<input type="text" name="s" placeholder="Search..."> <input
+			type="submit" value="search">
+	</form>
+
+	<!-- the result of the search will be rendered inside this div -->
+
+	<div id="result"></div>
+
+	<script>
+	$("#searchForm1").submit(
+			function(event) {
+				alert("111111111111111");
+				event.preventDefault();
+				var $form = $(this), term = $form.find("input[name='s']").val();
+				
+				var data = {};
+				
+				data['name'] = encodeURI("1");
+				data['message'] = encodeURI(term);
+				
+				data['name'] = "1";
+				data['message'] = term;
+				
+//				alert(data);
+//				alert(data.name);
+				
+				var personInfoJson = new Object();
+				  personInfoJson.name = "1";
+				  personInfoJson.message    = term;
+
+
+				  var finalJsonData = JSON.stringify(personInfoJson);
+				  addData(data);
+				  //aaa(JSON.stringify(data))
+			}
+
+	);
+	
+	function addData(data){
+		console.log('S:', data);
+	     $.ajax({
+	             type: "POST",
+	             url: "http://192.168.56.1:9191/api/domain/",
+	             data: JSON.stringify(data),
+	             contentType: "application/json; charset=utf-8",
+	             crossDomain: true,
+	             dataType: "json",
+	             success: function (data, status, jqXHR) {
+	                 	var content = data.message;
+	                 	alert("---> : "+content)
+						$("#result").empty().append(content);
+						alert(data.message);
+	             },
+
+	             error: function (jqXHR, status) {
+	                 // error handler
+	                 console.log("==============> : "+jqXHR);
+	             }
+	          });
+	    }
+	
+	function  aaa(data) {
+
+		$.ajax({ url: 'http://192.168.56.1:9191/api/domain/',  type: "POST", dataType: 'json',
+		             success:function(data) {
+		                console.log('A:', data); //JSON.stringify(data));
+		             }
+		}) };
+	
+		// Attach a submit handler to the form
+		$("#searchForm").submit(
+				function(event) {
+					//getJsonData();
+					// Stop form from submitting normally
+					event.preventDefault();
+
+					// Get some values from elements on the page:
+					var $form = $(this), term = $form.find("input[name='s']")
+							.val(), url = $form.attr("action");
+					
+					
+					  var personInfoJson = new Object();
+					  personInfoJson.name = "삼돌이";
+					  personInfoJson.message    = term;
+
+
+					  var finalJsonData = JSON.stringify(personInfoJson);
+					  
+					alert(term);
+					alert(url);
+					alert(finalJsonData);
+					  
+					// Send the data using post
+					//var posting = $.post(url, {
+					//	s : term
+					//});
+					
+					var posting = $.post(url, {
+						finalJsonData
+					});
+
+					// Put the results in a div
+					posting.done(function(data) {
+						var content = $(data).find("#content");
+						$("#result").empty().append(content);
+					});
+				});
+		
+		function getJsonData() {
+		     // 회원가입을 할 사람의 JSON 객체를 생성
+		     var personInfoJson = new Object();
+			 personInfoJson.name = "이름";
+			 personInfoJson.age    = "나이";
+
+			// 취미는 여러개니까 배열을 만들어 넣는다.
+			var hobbyJsonArray = new Array();
+			var hobby1 = new Object();
+			hobby1.hobby = "프로그래밍";
+			hobbyJsonArray.push(hobby1);  // 배열에 Object를 넣을 땐 push 함수를 사용
+
+
+			var hobby2 = new Object();
+			hobby2.hobby = "기타";
+			hobbyJsonArray.push(hobby2);
+
+			var hobby3 = new Object();
+			hobby3.hobby = "음악";
+			hobbyJsonArray.push(hobby3);
+
+
+
+			// 회원정보에 왜 넣어야 하는지 모르지만 다른 예제가 생각나지 않아 넣은
+			// 자격증은 자격증 하나에 여러 정보를 담고 있으니 당연히 배열로 만든다.
+			// 특히, 취미보다 더 많은 정보를 가지고 있다는 점을 주목하자. 
+
+			var licenseJsonArray = new Array();
+			var license1 = new Object();
+
+			license1.issue_no = "1847-38409-2399";
+			license1.license_nm = "내 자격증";
+			license1.level = "9급 마스터";
+			licenseJsonArray.push(license1);
+
+			var license2 = new Object();
+			license2.issue_no = "1847-38409-1111";
+			license2.license_nm = "내가 부여한 요리사 자격증";
+			license2.level = "7급 마스터";
+			licenseJsonArray.push(license2);
+
+			// 본체에 조립
+			personInfoJson.hobbyList = hobbyJsonArray;
+			personInfoJson.licenseList = licenseJsonArray;
+
+
+			// 최종 JSON 데이터로 만들기
+			var finalJsonData = JSON.stringify(personInfoJson);
+			alert(finalJsonData);
+
+		}
+	</script>
+</body>
+</html>

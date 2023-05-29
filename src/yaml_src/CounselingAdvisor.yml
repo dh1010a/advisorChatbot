@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: counselingadvisor
+  labels:
+    app: counselingadvisor
+spec:
+  selector:
+    matchLabels:
+      app: counselingadvisor
+      tier: client
+  template:
+    metadata:
+      labels:
+        app: counselingadvisor
+        tier: client
+    spec:
+      containers:
+        - image: locotalk/chatbot:CounselingAdvisor-v1.0.20230430
+          name: counselingadvisor
+          ports:
+            - containerPort: 8080
+              name: advisor
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: counselingadvisor
+  labels:
+    app: counselingadvisor
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      nodePort: 30992
+  selector:
+    app: counselingadvisor
+    tier: client

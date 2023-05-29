@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>User Page</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+	/*<![CDATA[*/
+	var name = "[[${name}]]";
+	var userid = "[[${userid}]]";
+	var targetUrl = "[[${targetUrl}]]";
+	//console.log(message);
+	/*]]>*/
+	
+	function urlencode(str) {
+	    str = (str + '').toString();
+	    return encodeURIComponent(str)
+	        .replace(/!/g, '%21')
+	        .replace(/'/g, '%27')
+	        .replace(/\(/g, '%28')
+	        .replace(/\)/g, '%29')
+	        .replace(/\*/g, '%2A')
+	        .replace(/%20/g, '+');
+	}
+	
+	function popupOpenAdvisor(){
+//		var popUrl = "http://demo.aicentro.ml:8080/CounselingAdvisor?name="+name+"&userid="+userid;	//팝업창에 출력될 페이지 URL
+		var popUrl = targetUrl+"?name="+urlencode(name)+"&userid="+userid;	//팝업창에 출력될 페이지 URL
+		var popOption = "width=500, height=620, resizable=no, scrollbars=no, status=no, top=50, left=300;";    //팝업창 옵션(optoin)
+			window.open(popUrl,"",popOption);
+	}
+</script>
+</head>
+
+<body>
+	<div class="container">
+	
+		<form th:action="@{/logout}" method="get">
+			<button class="btn btn-md btn-danger btn-block" name="registration"
+				type="Submit">Logout</button>
+		</form>    
+		
+		<div class="panel-group" style="margin-top:40px">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<span th:utext="${userName}"></span>
+				</div>
+				<div class="panel-body">
+					<p class="admin-message-text text-center">빠른 업무처리를 원하신다면<br>아래 채팅봇을 클릭해주세요</p>
+					<img th:src="@{/images/startrm.png}" onClick="javascript:popupOpenAdvisor();" 
+						class="img-responsive center-block" width="400" height="400" alt="Beer" style="cursor:pointer"/> 
+				</div>
+				
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login
+  labels:
+    app: login
+spec:
+  selector:
+    matchLabels:
+      app: login
+      tier: user
+  template:
+    metadata:
+      labels:
+        app: login
+        tier: user
+    spec:
+      containers:
+        - image: locotalk/chatbot:Login-v1.0.20230430
+          name: login
+          ports:
+            - containerPort: 9000
+              name: login
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: login
+  labels:
+    app: login
+spec:
+  type: NodePort
+  ports:
+    - port: 9000
+      nodePort: 30993
+  selector:
+    app: login
+    tier: user

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: advisor
+  labels:
+    app: advisor
+spec:
+  selector:
+    matchLabels:
+      app: advisor
+      tier: server
+  template:
+    metadata:
+      labels:
+        app: advisor
+        tier: server
+    spec:
+      containers:
+        - image: locotalk/chatbot:advisor-v1.0.20230430
+          name: advisor
+          ports:
+            - containerPort: 9191
+              name: advisor
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: advisor-svc
+  labels:
+    service: advisor-svc
+spec:
+  type: NodePort
+  ports:
+    - port: 9191
+      nodePort: 30988
+  selector:
+    app: advisor
+    tier: server
