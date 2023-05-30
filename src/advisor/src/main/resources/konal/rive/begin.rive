@@ -6,7 +6,7 @@
 < begin
 
 // The Botmaster's Name
-! var master = 도현
+! var master = 챗돌이주인장
 
 // Bot Variables
 ! var name     = 챗돌이 
@@ -2743,3 +2743,4 @@
 ! sub /             = 나누기
 ! sub *             = 곱하기
 ! sub setting         = 세팅
+! array dot = .
