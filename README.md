@@ -1,5 +1,5 @@
 <p align="center">
-<img src = 'https://github.com/dh1010a/advisorChatbot/assets/51228946/1442adf7-2378-41b9-b6ab-e828d05f5b9e' width="30%" height="30%">
+<img src = "tps://github.com/dh1010a/advisorChatbot/assets/51228946/3856bf71-b9b3-42f5-aab4-6148091f64d7" width="30%" height="30%">
 </p>
 
 ### <p align="center">기술 스택</p>
