@@ -8,8 +8,8 @@
 
 ## 🔎 미리보기
 <p align="center">
-<img src = "https://github.com/dh1010a/advisorChatbot/assets/51228946/e71e1af1-3d05-4b44-8f91-96ca6c7d0f51" height="305px" width="200px">
+<img src = "https://github.com/dh1010a/advisorChatbot/assets/51228946/e71e1af1-3d05-4b44-8f91-96ca6c7d0f51" height="310px" width="200px">
  <img src = "https://github.com/dh1010a/advisorChatbot/assets/51228946/628ef58f-ebe7-4245-8c44-253fc18a5277" height="310px" width="200px">
-<img src = "https://github.com/dh1010a/advisorChatbot/assets/51228946/628ef58f-ebe7-4245-8c44-253fc18a5277" height="310px" width="200px">
+<img src = "https://github.com/dh1010a/advisorChatbot/assets/51228946/6fe1fa0d-0c33-4a41-a2b4-9a2fc1d91fd4" height="310px" width="200px">
  <img src = "https://github.com/dh1010a/advisorChatbot/assets/51228946/4ca2426d-649c-4d3c-8656-6cc680db1650" height="290px" width="200px">
 </p>
