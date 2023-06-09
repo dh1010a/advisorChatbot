@@ -16,5 +16,5 @@
 
 ## 주요기능
 <p align="center">
-<img src = 'https://github.com/dh1010a/advisorChatbot/assets/51228946/87d0cc7a-88ac-4278-9336-f68f968bb7ef'>
+<img src = 'https://github.com/dh1010a/advisorChatbot/assets/51228946/87d0cc7a-88ac-4278-9336-f68f968bb7ef' width="70%" height="70%">
 </p>
