@@ -14,7 +14,7 @@
  <img src = "https://github.com/dh1010a/advisorChatbot/assets/51228946/4ca2426d-649c-4d3c-8656-6cc680db1650" height="290px" width="200px">
 </p>
 
-## 주요기능
+## 📏 주요기능
 <p align="center">
 <img src = 'https://github.com/dh1010a/advisorChatbot/assets/51228946/87d0cc7a-88ac-4278-9336-f68f968bb7ef' width="70%" height="70%">
 </p>
