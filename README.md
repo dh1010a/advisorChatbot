@@ -4,11 +4,14 @@
 
 ### <p align="center">기술 스택</p>
 <div align="center">
- <img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Java&logoColor=white" />
+ <img src="https://img.shields.io/badge/Java-FC4C02?style=flat&logo=coffeescript&logoColor=white" />
+ <img src="https://img.shields.io/badge/rivescript-E6484F?style=flat&logo=rescript&logoColor=white"/>
+ <img src="https://img.shields.io/badge/spring-6DB33F?style=flat&logo=spring&logoColor=white"/>
  <img src="https://img.shields.io/badge/html5-E34F26?style=flat&logo=html5&logoColor=white"/>
  <img src="https://img.shields.io/badge/css3-1572B6?style=flat&logo=css3&logoColor=white"/>
+</div>
+<div align="center">
  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=white"/>
-<img src="https://img.shields.io/badge/spring-6DB33F?style=flat&logo=spring&logoColor=white"/>
  <img src="https://img.shields.io/badge/docker-2496ED?style=flat&logo=docker&logoColor=white"/>
   <img src="https://img.shields.io/badge/springboot-6DB33F?style=flat&logo=springboot&logoColor=white"/>
   <img src="https://img.shields.io/badge/kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white"/>
@@ -17,7 +20,7 @@
 
 <br>
 
-# 컨테이너 기반 챗봇을 활용한 업무처리 시스템
+# 🤖 컨테이너 기반 챗봇을 활용한 업무처리 시스템
 산업 영역에서 챗봇에 대한 유지 보수 및 도입 이후 관리의 어려움을 해소하고자 <br>
 쿠버네티스 기반의 효율적인 운영 및 관리를 지원하는 업무지원 챗봇을 만들었습니다.
  
@@ -50,4 +53,9 @@
 ## 📃 서비스 구상도
 <p align="center">
 <img src = 'https://github.com/dh1010a/advisorChatbot/assets/51228946/2aa52360-8caa-435c-b2e6-7b489ea5ea59' width="60%" height="60%">
+ </p>
+ 
+ ## 📈 기대효과
+<p align="center">
+<img src = 'https://github.com/dh1010a/advisorChatbot/assets/51228946/29a6f6ba-27a4-4ca9-a23d-0b771ee04b4b' width="80%" height="80%">
  </p>
