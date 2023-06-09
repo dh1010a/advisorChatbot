@@ -8,8 +8,8 @@
 
 ## 🔎 Overview
 <p align="center">
-<img src = "https://github.com/dh1010a/advisorChatbot/assets/51228946/628ef58f-ebe7-4245-8c44-253fc18a5277">
-<img src = "https://github.com/dh1010a/advisorChatbot/assets/51228946/628ef58f-ebe7-4245-8c44-253fc18a5277">
- <img src = "https://github.com/dh1010a/advisorChatbot/assets/51228946/628ef58f-ebe7-4245-8c44-253fc18a5277">
+<img src = "https://github.com/dh1010a/advisorChatbot/assets/51228946/628ef58f-ebe7-4245-8c44-253fc18a5277" width="200px">
+<img src = "https://github.com/dh1010a/advisorChatbot/assets/51228946/628ef58f-ebe7-4245-8c44-253fc18a5277" width="200px">
+ <img src = "https://github.com/dh1010a/advisorChatbot/assets/51228946/628ef58f-ebe7-4245-8c44-253fc18a5277" width="200px">
 </p>
 
