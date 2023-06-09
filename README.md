@@ -13,3 +13,8 @@
 <img src = "https://github.com/dh1010a/advisorChatbot/assets/51228946/6fe1fa0d-0c33-4a41-a2b4-9a2fc1d91fd4" height="310px" width="200px">
  <img src = "https://github.com/dh1010a/advisorChatbot/assets/51228946/4ca2426d-649c-4d3c-8656-6cc680db1650" height="290px" width="200px">
 </p>
+
+## 주요기능
+<p align="center">
+<img src = 'https://github.com/dh1010a/advisorChatbot/assets/51228946/87d0cc7a-88ac-4278-9336-f68f968bb7ef' width="30%" height="30%">
+</p>
